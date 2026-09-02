@@ -1,0 +1,40 @@
+# Sistemas operacionais
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDEs e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Configurações locais e segredos
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+
+# JavaScript / TypeScript (etapas futuras)
+node_modules/
+dist/
+build/
+coverage/
+
+# Python (etapas futuras)
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Worktrees locais
+.worktrees/
+worktrees/

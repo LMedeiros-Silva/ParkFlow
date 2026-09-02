@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Símbolo ParkFlow</title>
+  <desc id="desc">Letra P geométrica com um percurso em ciano que termina em seta.</desc>
+  <rect x="4" y="4" width="88" height="88" rx="22" fill="#0B1F3A"/>
+  <path d="M25 78V18H52C69.7 18 80 27.5 80 42.5S69.7 67 52 67H41V78H25ZM41 34V51H52C59.6 51 64 48 64 42.5S59.6 34 52 34H41Z" fill="#FFFFFF"/>
+  <path d="M43 42.5H55C63 42.5 68 47.5 68 54.5V61" fill="none" stroke="#00A6B2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M61 57L68 64L75 57" fill="none" stroke="#00A6B2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="43" cy="42.5" r="4.5" fill="#00A6B2"/>
+</svg>
