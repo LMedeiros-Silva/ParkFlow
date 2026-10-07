@@ -4,7 +4,7 @@ O roadmap organiza a evolução em três partes conceituais. Somente a Parte 1 p
 
 ## Parte 1 — Concepção e preparação
 
-**Situação:** entrega atual.
+**Situação:** concluída.
 
 - refinar problema, objetivos e público-alvo;
 - construir personas e hipóteses a validar;
@@ -19,6 +19,20 @@ O roadmap organiza a evolução em três partes conceituais. Somente a Parte 1 p
 
 **Marco:** projeto documental coerente, sem aplicação funcional.
 
+## Checkpoint 5 — Protótipo funcional
+
+**Situação:** entrega atual.
+
+- implementar um protótipo web em React, TypeScript e Vite, sem backend;
+- centralizar as regras de disponibilidade e ocupação em funções puras testadas;
+- simular login, logout e persistência com `localStorage`;
+- entregar consulta pública, dashboard, navegação por setores e vagas, atualização de estado, histórico e relatório com CSV;
+- aplicar a identidade visual e os critérios de acessibilidade e responsividade;
+- criar diagramas de atividade e de sequência do MVP;
+- registrar o status real de cada requisito e auditar a entrega.
+
+**Marco:** fluxo de demonstração completo no navegador, com testes, lint e build sem erros.
+
 ## Parte 2 — Preparação e desenvolvimento inicial
 
 **Situação:** sugestão sujeita às orientações futuras da disciplina.
@@ -29,7 +43,7 @@ Possíveis atividades:
 - revisar a stack considerada e registrar decisões arquiteturais;
 - criar protótipos de baixa e alta fidelidade;
 - preparar ambiente, padrões e estratégia de testes;
-- implementar um recorte vertical mínimo da experiência do motorista e da gestão;
+- evoluir o recorte do Checkpoint 5 com backend, persistência real e autenticação segura;
 - modelar persistência a partir do domínio aprovado;
 - revisar backlog e rastreabilidade após aprendizados.
 

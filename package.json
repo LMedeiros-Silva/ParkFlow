@@ -1,0 +1,20 @@
+{
+  "name": "parkflow",
+  "version": "0.5.0",
+  "private": true,
+  "description": "ParkFlow — Sistema Inteligente de Gestão de Estacionamentos (protótipo funcional do Checkpoint 5).",
+  "license": "MIT",
+  "workspaces": [
+    "frontend"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace frontend",
+    "build": "npm run build --workspace frontend",
+    "preview": "npm run preview --workspace frontend",
+    "test": "npm run test --workspace frontend",
+    "lint": "npm run lint --workspace frontend"
+  }
+}

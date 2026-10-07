@@ -1,0 +1,48 @@
+/* Tokens da identidade visual (docs/marca/identidade-visual.md). */
+:root {
+  /* Marca */
+  --cor-primaria: #0b1f3a;
+  --cor-destaque: #00a6b2;
+  --cor-destaque-texto: #007f8b;
+  --cor-nevoa: #e8eef7;
+  --cor-fundo: #ffffff;
+  --cor-fundo-app: #f5f7fb;
+  --cor-texto: #1d2939;
+  --cor-texto-apoio: #475467;
+  --cor-borda: #d0d5dd;
+
+  /* Estados — sempre acompanhados de ícone e rótulo */
+  --cor-livre: #16803c;
+  --cor-livre-fundo: #edf7f0;
+  --cor-ocupada: #c43232;
+  --cor-ocupada-fundo: #fcefef;
+  --cor-reservada: #9a6700;
+  --cor-reservada-fundo: #fdf6e7;
+  --cor-indisponivel: #667085;
+  --cor-indisponivel-fundo: #f2f4f7;
+  --cor-erro: #b42318;
+  --cor-erro-fundo: #fef3f2;
+  --cor-info: #175cd3;
+  --cor-info-fundo: #eff4ff;
+
+  /* Tipografia */
+  --fonte: 'Inter Variable', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Espaçamento (base 8 px) */
+  --esp-1: 4px;
+  --esp-2: 8px;
+  --esp-3: 12px;
+  --esp-4: 16px;
+  --esp-5: 24px;
+  --esp-6: 32px;
+  --esp-7: 48px;
+
+  /* Formas */
+  --raio-controle: 8px;
+  --raio-cartao: 12px;
+  --sombra: 0 1px 2px rgb(16 24 40 / 6%), 0 1px 3px rgb(16 24 40 / 10%);
+  --sombra-elevada: 0 12px 24px -4px rgb(16 24 40 / 12%), 0 4px 8px -2px rgb(16 24 40 / 8%);
+  --foco: 0 0 0 3px #ffffff, 0 0 0 5px var(--cor-destaque-texto);
+
+  --largura-sidebar: 256px;
+}

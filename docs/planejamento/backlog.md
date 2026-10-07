@@ -19,6 +19,23 @@ Prioridades: `Essencial`, `Importante` e `Desejável`. A inclusão de um item no
 | PB11 | Como gestor, quero gerar e exportar relatório, para compartilhar um recorte operacional. | Importante | RF15, RF16 |
 | PB12 | Como gestor, quero consultar alterações administrativas, para rastrear ações relevantes. | Importante | RF17 |
 
+## Situação no Checkpoint 5
+
+| ID | Situação | Observação |
+|---|---|---|
+| PB01 | Simulado | login e logout no navegador; RF18 não implementado |
+| PB02 | Não iniciado | gestão de administradores fica para etapa futura |
+| PB03 | Parcial | consulta de estacionamentos e setores; sem cadastro |
+| PB04 | Parcial | consulta de tipos e vagas; sem cadastro |
+| PB05 | Implementado | atualização com histórico; trilha administrativa (RF17) não implementada |
+| PB06 | Implementado | consulta pública `/consulta` |
+| PB07 | Implementado | filtros por setor e tipo |
+| PB08 | Implementado | dashboard e taxa de ocupação atual |
+| PB09 | Implementado | vagas especiais por tipo e setor |
+| PB10 | Implementado | histórico com filtros |
+| PB11 | Implementado | relatório e exportação CSV (sem PDF) |
+| PB12 | Não iniciado | depende de RF17 |
+
 ## Melhorias após o núcleo do MVP
 
 | ID | Item | Prioridade | Condição |

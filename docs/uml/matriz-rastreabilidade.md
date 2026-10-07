@@ -29,3 +29,25 @@ Esta matriz liga a motivação do produto aos comportamentos e ao modelo de dom�
 - `RF16` exporta um relatório já gerado; não cria um cálculo paralelo.
 - Nenhum caso de uso exige previsão, sensores, pagamento, reservas ou cancelas.
 - `PrevisaoOcupacao` não é uma classe do MVP.
+
+## Implementação no Checkpoint 5
+
+A tabela liga cada requisito funcional ao código do protótipo em `frontend/src` e aos testes em `frontend/tests`. O status detalhado está em [`docs/checkpoint-5/status-implementacao.md`](../checkpoint-5/status-implementacao.md).
+
+| Requisito | Status | Telas e componentes | Regras e serviços | Testes |
+|---|---|---|---|---|
+| RF01, RF02 | Simulado | `LoginPage`, `MenuUsuario`, `RotaProtegida` | `services/auth.ts`, `services/storage.ts` | `storage.test.ts` |
+| RF03 | Não implementado | — | — | — |
+| RF04, RF05 | Parcial (consulta) | `EstacionamentosPage`, `SetoresPage`, `CartaoSetor` | `data/seed.ts` | `seed.test.ts` |
+| RF06, RF07 | Parcial (consulta) | `VagasSetorPage`, `ModalVaga` | `data/seed.ts`, `domain/filtros.ts` | `seed.test.ts`, `filtros.test.ts` |
+| RF08 | Implementado | `ModalVaga` | `domain/vagas.ts`, `services/storage.ts` | `vagas.test.ts`, `storage.test.ts` |
+| RF09, RF10 | Implementado | `ConsultaPage`, `LayoutConsulta` | `domain/indicadores.ts`, `domain/filtros.ts` | `indicadores.test.ts`, `filtros.test.ts` |
+| RF11, RF12, RF14 | Implementado (RF12 parcial) | `DashboardPage`, `GraficoOcupacao`, `CartaoSetor` | `domain/indicadores.ts` | `indicadores.test.ts`, `seed.test.ts` |
+| RF13 | Implementado | `HistoricoPage` | `domain/filtros.ts` | `filtros.test.ts` |
+| RF15, RF16 | Implementado | `RelatoriosPage` | `domain/relatorio.ts`, `domain/csv.ts` | `relatorio.test.ts` |
+| RF17, RF18 | Não implementado | — | — | — |
+
+| Diagrama do Checkpoint 5 | Requisitos e regras representados |
+|---|---|
+| [Atividade do MVP](diagrama-atividade-mvp.drawio) | RF01, RF08, RF11, RN03, RN04, RN08, RNF09 |
+| [Sequência do MVP](diagrama-sequencia-mvp.drawio) | RF08, RN04, RN08, RN09, RNF09 |

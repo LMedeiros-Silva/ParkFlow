@@ -24,6 +24,12 @@ function Add-Result {
     }
 }
 
+function Get-ProjectFiles {
+    # Ignora dependências instaladas, builds e metadados do Git nas varreduras recursivas.
+    $ignored = '[\\/](node_modules|dist|\.git)([\\/]|$)'
+    return @(Get-ChildItem -LiteralPath $root -Recurse -File | Where-Object { $_.FullName.Substring($root.Length) -notmatch $ignored })
+}
+
 function Get-FullPath {
     param([string]$RelativePath)
     return Join-Path $root ($RelativePath -replace '/', [System.IO.Path]::DirectorySeparatorChar)
@@ -62,7 +68,23 @@ function Test-RequiredFiles {
         'docs/planejamento/roadmap.md',
         'docs/superpowers/specs/2026-09-01-parkflow-parte-1-design.md',
         'docs/superpowers/plans/2026-09-01-parkflow-parte-1.md',
-        'scripts/validar-entrega.ps1'
+        'scripts/validar-entrega.ps1',
+        'package.json',
+        'frontend/package.json',
+        'frontend/index.html',
+        'frontend/vite.config.ts',
+        'frontend/eslint.config.js',
+        'frontend/public/favicon.svg',
+        'frontend/src/main.tsx',
+        'frontend/src/App.tsx',
+        'frontend/src/domain/indicadores.ts',
+        'frontend/src/domain/vagas.ts',
+        'frontend/src/data/seed.ts',
+        'frontend/src/services/storage.ts',
+        'docs/uml/diagrama-atividade-mvp.drawio',
+        'docs/uml/diagrama-sequencia-mvp.drawio',
+        'docs/checkpoint-5/status-implementacao.md',
+        'docs/checkpoint-5/auditoria-checkpoint-5.md'
     )
 
     $missing = @($requiredFiles | Where-Object { -not (Test-Path -LiteralPath (Get-FullPath $_) -PathType Leaf) })
@@ -198,7 +220,7 @@ function Test-RnfDiagramCoverage {
 }
 
 function Test-MarkdownLinks {
-    $markdownFiles = @(Get-ChildItem -LiteralPath $root -Recurse -File -Filter '*.md')
+    $markdownFiles = @(Get-ProjectFiles | Where-Object { $_.Extension -eq '.md' })
     $broken = [System.Collections.Generic.List[string]]::new()
     $checked = 0
 
@@ -228,7 +250,7 @@ function Test-MarkdownLinks {
 }
 
 function Test-ExternalVideoPolicy {
-    $files = @(Get-ChildItem -LiteralPath $root -Recurse -File)
+    $files = @(Get-ProjectFiles)
     $forbiddenNames = @($files | Where-Object { $_.Name -match '(?i)roteiro.*video|video.*roteiro' })
     $timedScript = [System.Collections.Generic.List[string]]::new()
     foreach ($file in $files | Where-Object { $_.Extension -in @('.md', '.txt') }) {
@@ -241,7 +263,7 @@ function Test-ExternalVideoPolicy {
 }
 
 function Test-PlaceholdersAndScope {
-    $textFiles = @(Get-ChildItem -LiteralPath $root -Recurse -File | Where-Object { $_.Extension -in @('.md', '.drawio', '.svg') })
+    $textFiles = @(Get-ProjectFiles | Where-Object { $_.Extension -in @('.md', '.drawio', '.svg') })
     $pending = [System.Collections.Generic.List[string]]::new()
     foreach ($file in $textFiles) {
         $content = Get-Content -Raw -LiteralPath $file.FullName
@@ -251,24 +273,48 @@ function Test-PlaceholdersAndScope {
     }
     Add-Result ($pending.Count -eq 0) 'Nenhum marcador de pendência não intencional foi encontrado.' "Marcadores de pendência encontrados: $($pending -join ', ')."
 
-    $functionalCode = @(Get-ChildItem -LiteralPath $root -Recurse -File | Where-Object {
-        $_.Extension -in @('.js', '.jsx', '.ts', '.tsx', '.py', '.java', '.cs', '.go', '.rs', '.sql')
+    # O código do Checkpoint 5 fica somente em frontend/; backend e banco continuam sem código.
+    $frontendPrefix = [System.IO.Path]::DirectorySeparatorChar + 'frontend' + [System.IO.Path]::DirectorySeparatorChar
+    $functionalCode = @(Get-ProjectFiles | Where-Object {
+        $_.Extension -in @('.js', '.jsx', '.ts', '.tsx', '.py', '.java', '.cs', '.go', '.rs', '.sql') -and
+        -not $_.FullName.Substring($root.Length).StartsWith($frontendPrefix)
     })
-    Add-Result ($functionalCode.Count -eq 0) 'Nenhum código funcional foi criado na Parte 1.' "Arquivos de código funcional encontrados: $($functionalCode.FullName -join ', ')."
+    Add-Result ($functionalCode.Count -eq 0) 'Nenhum código funcional fora de frontend/ (backend e banco permanecem sem implementação).' "Arquivos de código fora de frontend/: $($functionalCode.FullName -join ', ')."
 }
 
-Write-Host '=== Validação da Parte 1 do ParkFlow ===' -ForegroundColor Cyan
+function Test-PackageJson {
+    try {
+        $rootPackage = Get-Content -Raw -LiteralPath (Get-FullPath 'package.json') | ConvertFrom-Json
+        $frontendPackage = Get-Content -Raw -LiteralPath (Get-FullPath 'frontend/package.json') | ConvertFrom-Json
+    }
+    catch {
+        Add-Result $false '' "package.json inválido: $($_.Exception.Message)"
+        return
+    }
+
+    $requiredScripts = @('dev', 'build', 'test', 'lint', 'preview')
+    $missingRoot = @($requiredScripts | Where-Object { -not $rootPackage.scripts.PSObject.Properties[$_] })
+    $missingFrontend = @($requiredScripts | Where-Object { -not $frontendPackage.scripts.PSObject.Properties[$_] })
+    $hasWorkspace = @($rootPackage.workspaces) -contains 'frontend'
+    $valid = $hasWorkspace -and $missingRoot.Count -eq 0 -and $missingFrontend.Count -eq 0
+    Add-Result $valid 'package.json da raiz declara o workspace frontend e os scripts dev, build, test, lint e preview.' "package.json incompleto: workspace frontend=$hasWorkspace; scripts ausentes na raiz=$($missingRoot -join ', '); no frontend=$($missingFrontend -join ', ')."
+}
+
+Write-Host '=== Validação da entrega do ParkFlow (Parte 1 e Checkpoint 5) ===' -ForegroundColor Cyan
 Test-RequiredFiles
 Test-IdentifierCount 'docs/requisitos/requisitos-funcionais.md' '(?m)^### (RF\d{2})\s' 18 'Requisitos funcionais'
 Test-IdentifierCount 'docs/requisitos/requisitos-nao-funcionais.md' '(?m)^### (RNF\d{2})\s' 12 'Requisitos não funcionais'
 Test-IdentifierCount 'docs/requisitos/regras-de-negocio.md' '(?m)^### (RN\d{2})\s' 10 'Regras de negócio'
 Test-Drawio 'docs/uml/diagrama-casos-de-uso.drawio' 18 10
 Test-Drawio 'docs/uml/diagrama-classes.drawio' 15 7
+Test-Drawio 'docs/uml/diagrama-atividade-mvp.drawio' 20 20
+Test-Drawio 'docs/uml/diagrama-sequencia-mvp.drawio' 10 10
 Test-Svg 'assets/logo/parkflow-logo.svg'
 Test-Svg 'assets/logo/parkflow-simbolo.svg'
 Test-MarkdownLinks
 Test-ExternalVideoPolicy
 Test-PlaceholdersAndScope
+Test-PackageJson
 
 Write-Host "`nSucessos: $($successes.Count) | Falhas: $($failures.Count)"
 if ($failures.Count -gt 0) {
