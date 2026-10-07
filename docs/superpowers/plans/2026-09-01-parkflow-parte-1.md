@@ -163,7 +163,6 @@ Expected: nenhum erro e presença de elementos vetoriais separados.
 
 **Files:**
 - Create: `docs/pitch/proposta-de-valor.md`
-- Create: `docs/pitch/pitch-1-minuto.md`
 - Create: `docs/planejamento/trello.md`
 - Create: `docs/planejamento/backlog.md`
 - Create: `docs/planejamento/roadmap.md`

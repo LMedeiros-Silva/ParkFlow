@@ -167,7 +167,7 @@ Se os dados salvos estiverem corrompidos ou forem de outra versão, o sistema re
 | Requisitos | [RFs](docs/requisitos/requisitos-funcionais.md) · [RNFs](docs/requisitos/requisitos-nao-funcionais.md) · [Regras](docs/requisitos/regras-de-negocio.md) — cada item com “Status no Checkpoint 5” |
 | Escopo | [MVP, Checkpoint 5, exclusões e evoluções](docs/requisitos/escopo.md) |
 | Marca | [Identidade visual](docs/marca/identidade-visual.md) · [Logo](assets/logo/parkflow-logo.svg) · [Símbolo](assets/logo/parkflow-simbolo.svg) |
-| Pitch | [Proposta de valor](docs/pitch/proposta-de-valor.md) · [Pitch de 1 minuto](docs/pitch/pitch-1-minuto.md) |
+| Pitch | [Proposta de valor](docs/pitch/proposta-de-valor.md) |
 | Planejamento | [Trello](docs/planejamento/trello.md) · [Backlog](docs/planejamento/backlog.md) · [Roadmap](docs/planejamento/roadmap.md) |
 | Qualidade | [Auditoria da Parte 1](docs/AUDITORIA-ENTREGA.md) · [Auditoria do Checkpoint 5](docs/checkpoint-5/auditoria-checkpoint-5.md) |
 

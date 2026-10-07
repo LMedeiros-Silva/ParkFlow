@@ -62,7 +62,6 @@ function Test-RequiredFiles {
         'docs/marca/identidade-visual.md',
         'docs/marca/README.md',
         'docs/pitch/proposta-de-valor.md',
-        'docs/pitch/pitch-1-minuto.md',
         'docs/planejamento/trello.md',
         'docs/planejamento/backlog.md',
         'docs/planejamento/roadmap.md',

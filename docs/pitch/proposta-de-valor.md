@@ -53,30 +53,6 @@ Os benefícios são hipóteses de valor. Impactos quantitativos deverão ser med
 
 O ParkFlow ocupa o espaço entre a comunicação de disponibilidade e a gestão operacional. A marca deve ser percebida como B2B, moderna e confiável, com uma experiência pública simples para o motorista.
 
-## Hipótese de modelo comercial SaaS B2B
-
-A contratação poderá seguir assinatura recorrente e ser dimensionada por:
-
-- quantidade de vagas ativas;
-- quantidade de estacionamentos gerenciados;
-- número e tipo de usuários administrativos;
-- recursos de histórico, relatório e integração contratados;
-- necessidades de suporte, implantação e nível de serviço.
-
-### ParkFlow Starter
-
-Hipótese voltada a uma operação de menor porte e um estacionamento, com cadastros essenciais, consulta de disponibilidade, dashboard e histórico básico.
-
-### ParkFlow Business
-
-Hipótese para operações com mais setores, vagas ou unidades, incluindo relatórios ampliados, maior período de histórico e gestão de múltiplos estacionamentos.
-
-### ParkFlow Enterprise
-
-Hipótese para organizações com requisitos de escala, governança, suporte e futuras integrações específicas, condicionadas a análise técnica e comercial.
-
-Não há preços definidos. Os nomes e limites dos planos são hipóteses a validar com clientes, custos de infraestrutura e prioridades do produto.
-
 ## Mensagem-síntese
 
 **ParkFlow — Encontre. Estacione. Siga.** Uma plataforma que organiza a disponibilidade hoje e prepara a gestão para decisões melhores amanhã.

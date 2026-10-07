@@ -58,7 +58,7 @@ powershell -ExecutionPolicy Bypass -File scripts/validar-entrega.ps1
 - [x] Vídeo pitch publicado externamente e vinculado no README
 - [x] Vídeo de pitch e apresentação do projeto publicado externamente e vinculado no README
 
-**Evidências no repositório:** `docs/pitch/proposta-de-valor.md`, `docs/pitch/pitch-1-minuto.md` e links externos no `README.md`.
+**Evidências no repositório:** `docs/pitch/proposta-de-valor.md` e links externos no `README.md`.
 
 **Política do vídeo:** o roteiro é uma entrega acadêmica obrigatória, mas, por decisão do grupo, seu conteúdo não pode ser salvo ou versionado neste repositório. Ele deverá ser recebido externamente, distribuído entre os integrantes e ensaiado.
 
